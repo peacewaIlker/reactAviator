@@ -66,7 +66,6 @@ const App = () => {
                             <img
                                 src="/loading.gif"
                                 alt="Loading"
-                                className={`loading-gif`}
                             />
                             <div className={`coefficient ${!imageLoaded ? 'hidden' : ''}`}>
                                 {`x ${coefficient || 0.00}`}
@@ -82,7 +81,7 @@ const App = () => {
             </div>
             {!loading && (
                 <button onClick={handleClick}>
-                    {coefficient === null ? 'GET SIGNAL' : 'GET SIGNAL'}
+                    {coefficient === null ? 'START HACKING' : 'GET SIGNAL'}
                 </button>
             )}
         </div>
