@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 
 const App = () => {
     const [loading, setLoading] = useState(false);
     const [coefficient, setCoefficient] = useState(null);
     const [targetCoefficient, setTargetCoefficient] = useState(null);
-    const [imageLoaded, setImageLoaded] = useState(false); // Состояние для отслеживания загрузки изображения
+    const [imageLoaded, setImageLoaded] = useState(false);
+    const [gifAnimation, setGifAnimation] = useState(false);
 
     const generateCoefficient = () => {
         let randomNumbers = [];
@@ -31,13 +32,22 @@ const App = () => {
             start += 0.01;
             if (start >= target) {
                 clearInterval(interval);
-                setCoefficient(target.toFixed(2)); // Отображение коэффициента с двумя знаками после запятой
+                setCoefficient(target.toFixed(2));
                 setLoading(false);
+                setGifAnimation(false); // Остановка анимации гифки
             } else {
-                setCoefficient(start.toFixed(2)); // Отображение коэффициента с двумя знаками после запятой
+                setCoefficient(start.toFixed(2));
             }
-        }, 30); // Увеличение интервала для более плавной анимации
+        }, 30);
+
+        setGifAnimation(true); // Запуск анимации гифки
     };
+
+    useEffect(() => {
+        if (coefficient === targetCoefficient) {
+            setGifAnimation(false); // Остановка анимации гифки при достижении цели
+        }
+    }, [coefficient, targetCoefficient]);
 
     return (
         <div className="App">
@@ -50,16 +60,9 @@ const App = () => {
             </div>
             <div className="result-container">
                 <div className="image-container">
-                    <div className="loading-spinner">
-                        {loading && (
-                            <div className="spinner"></div>
-                        )}
+                    <div className={`coefficient ${coefficient !== null ? '' : 'hidden'}`}>
+                        {`x ${coefficient || '0.00'}`}
                     </div>
-                    {!loading && (
-                        <div className="coefficient">
-                            {coefficient !== null ? `x ${coefficient}` : 'x 0.00'}
-                        </div>
-                    )}
                     <div className={`default-image ${imageLoaded ? 'hidden' : ''}`}>
                         <img
                             src="/basic.png"
@@ -67,6 +70,11 @@ const App = () => {
                             onLoad={() => setImageLoaded(true)}
                         />
                     </div>
+                    {gifAnimation && (
+                        <div className="gif-animation">
+                            <img src="/loading.gif" alt="Loading" className="loading-gif" />
+                        </div>
+                    )}
                 </div>
             </div>
             {!loading && (
