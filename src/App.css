@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* Убираем скроллинг */
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('./images/background.png'); /* Убедитесь, что путь к картинке корректен */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.App {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Элементы прижаты к верху */
+  align-items: center;
+  padding-top: 60px; /* Увеличенный отступ сверху */
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 40px; /* Увеличенный отступ снизу для отступа от следующего элемента */
+}
+
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px; /* Увеличенный отступ между верхним и нижним текстом */
+}
+
+.header-image {
+  max-width: 30px; /* Уменьшенный размер изображения */
+  height: auto;
+  margin-right: 2px; /* Отступ между изображением и текстом */
+}
+
+.header-text {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400; /* Regular */
+  font-size: 20px; /* Уменьшенный размер шрифта */
+  line-height: 1.2;
+  color: #002038;
+}
+
+.header-text-bold {
+  font-weight: 900; /* Black */
+  font-size: 36px; /* Увеличенный шрифт для MINES HACKER */
+}
+
+.result-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 90vw;
+  margin-top: 20px; /* Отступ сверху для контейнера */
+}
+
+.image-container {
+  width: 90vw; /* Контейнер занимает 90% ширины экрана */
+  height: 90vw; /* Высота равна ширине */
+  position: relative;
+  border: 2px solid black; /* Черная рамка */
+  margin-bottom: 40px; /* Увеличенный отступ снизу для кнопки */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px; /* Опционально, для закругленных углов */
+}
+
+.loading-gif {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.coefficient {
+  position: absolute;
+  font-size: 48px;
+  color: white;
+  z-index: 2;
+}
+
+
+.App button {
+  height: 50px;
+  width: 250px; /* Увеличьте ширину в два раза */
+  padding: 2px; /* Увеличенный размер кнопки */
+  font-size: 30px; /* Увеличенный размер шрифта кнопки */
+  font-weight: 500;
+  margin-top: 20px; /* Отступ сверху для кнопки */
+  background-color: #002038; /* Фон кнопки */
+  color: white; /* Цвет текста */
+  border: none; /* Убираем рамку */
+  border-radius: 10px; /* Закругленные края */
+  cursor: pointer; /* Указатель курсора при наведении */
+  transition: background-color 0.3s ease; /* Сгладить переход цвета */
+}
+
+button:hover {
+  background-color: #003060; /* Более светлый фон при наведении */
+}
+
+.hidden {
+  display: none; /* Класс для скрытия элемента */
+}
+
+/* Адаптивные стили */
+@media (max-width: 768px) {
+  .App {
+    padding: 30px;
+  }
+
+  /*.App button {*/
+  /*  padding: 1px 20px;*/
+  /*  font-size: 20px;*/
+  /*}*/
+}
+
+@media (max-width: 480px) {
+  .App {
+    padding: 20px;
+  }
+  .App button {
+    width: 200px;
+    padding: 1px 20px;
+    font-size: 25px;
+  }
+}
