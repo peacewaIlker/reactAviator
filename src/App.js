@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
-const loadingGif = 'XDZT.gif'; // Путь к вашему GIF файлу
+const loadingGif = 'loading.gif'; // Путь к вашему GIF файлу
 
 const App = () => {
     const [loading, setLoading] = useState(false);
@@ -29,7 +29,7 @@ const App = () => {
                 randomNumbers.push(x);
             }
         }
-        return Number(randomNumbers[0].toFixed(1));
+        return Number(randomNumbers[0].toFixed(2));
     };
 
     const handleClick = () => {
