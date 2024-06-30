@@ -1,12 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
+const loadingGif = 'XDZT.gif'; // Путь к вашему GIF файлу
+
 const App = () => {
     const [loading, setLoading] = useState(false);
     const [coefficient, setCoefficient] = useState(null);
     const [targetCoefficient, setTargetCoefficient] = useState(null);
     const [imageLoaded, setImageLoaded] = useState(false);
     const [gifAnimation, setGifAnimation] = useState(false);
+    const [loadedGif, setLoadedGif] = useState(loadingGif); // Добавьте состояние для загрузки GIF
+
+
+    const img = new Image();
+    img.src = loadingGif
+    img.onload = () => {
+        setLoadedGif(loadingGif)
+    }
 
     const generateCoefficient = () => {
         let randomNumbers = [];
@@ -27,7 +37,7 @@ const App = () => {
         const target = generateCoefficient();
         setTargetCoefficient(target);
 
-        let start = 0;
+        let start = 1;
         const interval = setInterval(() => {
             start += 0.01;
             if (start >= target) {
@@ -64,7 +74,7 @@ const App = () => {
                     {loading ? (
                         <>
                             <img
-                                src="/loading.gif"
+                                src={loadedGif}
                                 alt="Loading"
                             />
                             <div className={`coefficient`}>
