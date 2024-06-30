@@ -63,7 +63,7 @@ const App = () => {
                     <div className={`coefficient ${coefficient !== null ? '' : 'hidden'}`}>
                         {`x ${coefficient || '0.00'}`}
                     </div>
-                    <div className={`default-image ${imageLoaded ? 'hidden' : ''}`}>
+                    <div className={`default-image ${imageLoaded ? 'hidden' : 'default-image'}`}>
                         <img
                             src="/basic.png"
                             alt="Default"
@@ -79,7 +79,7 @@ const App = () => {
             </div>
             {!loading && (
                 <button onClick={handleClick}>
-                    {coefficient === null ? 'Рассчитать результат' : 'Получить прогноз'}
+                    {coefficient === null ? 'GET SIGNAL' : 'GET SIGNAL'}
                 </button>
             )}
         </div>
