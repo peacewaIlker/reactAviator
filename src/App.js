@@ -3,14 +3,14 @@ import './App.css';
 import generateRandomNumber from './generateRandomNumber'; // Импортируйте функцию генерации коэффициента
 
 const loadingGif = 'XDZT.gif'; // Путь к вашему GIF файлу
-const headerImage = 'tg.png'; // Путь к вашему изображению для замены подписи
-const defaultImage = 'basic.jpg'; // Путь к изображению по умолчанию
+const headerImage = 'header-image.jpg'; // Путь к вашему изображению для замены подписи
+const defaultImage = 'default-image.jpg'; // Путь к изображению по умолчанию
 
 function App() {
     const [image, setImage] = useState(defaultImage);
     const [loading, setLoading] = useState(false);
-    const [coefficient, setCoefficient] = useState(0);
-    const [targetCoefficient, setTargetCoefficient] = useState(0);
+    const [coefficient, setCoefficient] = useState(null);
+    const [targetCoefficient, setTargetCoefficient] = useState(null);
     const requestRef = useRef();
 
     const incrementCoefficient = (startTime, duration) => {
@@ -53,12 +53,12 @@ function App() {
                     {loading && (
                         <>
                             <img src={loadingGif} alt="Loading" className="loading-gif" />
-                            <div className="coefficient">x {coefficient.toFixed(2)}</div>
+                            <div className="coefficient">x {coefficient !== null ? coefficient.toFixed(2) : ''}</div>
                         </>
                     )}
                     {!loading && image && (
                         <>
-                            <div className="coefficient">x {coefficient.toFixed(2)}</div>
+                            <div className="coefficient">x {targetCoefficient !== null ? targetCoefficient.toFixed(2) : ''}</div>
                             <img src={image} alt="Result" />
                         </>
                     )}
