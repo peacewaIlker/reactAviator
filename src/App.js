@@ -18,7 +18,7 @@ const App = () => {
                 randomNumbers.push(x);
             }
         }
-        return Number(randomNumbers[0].toFixed(2));
+        return Number(randomNumbers[0].toFixed(1));
     };
 
     const handleClick = () => {
@@ -26,15 +26,15 @@ const App = () => {
         const target = generateCoefficient();
         setTargetCoefficient(target);
 
-        let start = 1;
+        let start = 0;
         const interval = setInterval(() => {
             start += 0.01;
             if (start >= target) {
                 clearInterval(interval);
-                setCoefficient(target);
+                setCoefficient(target.toFixed(2)); // Отображение коэффициента с двумя знаками после запятой
                 setLoading(false);
             } else {
-                setCoefficient(start.toFixed(2));
+                setCoefficient(start.toFixed(2)); // Отображение коэффициента с двумя знаками после запятой
             }
         }, 30); // Увеличение интервала для более плавной анимации
     };
@@ -50,31 +50,23 @@ const App = () => {
             </div>
             <div className="result-container">
                 <div className="image-container">
-                    {loading ? (
-                        <>
-                            <img
-                                src="/loading.gif"
-                                alt="Loading"
-                                className={`loading-gif ${imageLoaded ? 'hidden' : ''}`}
-                            />
-                            {!imageLoaded && (
-                                <div className={`default-image ${imageLoaded ? 'hidden' : ''}`}>
-                                    <img
-                                        src="/basic.png"
-                                        alt="Default"
-                                        onLoad={() => setImageLoaded(true)}
-                                    />
-                                </div>
-                            )}
-                            <div className={`coefficient ${!imageLoaded ? 'hidden' : ''}`}>
-                                {`x ${coefficient || 0.00}`}
-                            </div>
-                        </>
-                    ) : (
-                        coefficient !== null && (
-                            <div className="coefficient">{`x ${coefficient}`}</div>
-                        )
+                    <div className="loading-spinner">
+                        {loading && (
+                            <div className="spinner"></div>
+                        )}
+                    </div>
+                    {!loading && (
+                        <div className="coefficient">
+                            {coefficient !== null ? `x ${coefficient}` : 'x 0.00'}
+                        </div>
                     )}
+                    <div className={`default-image ${imageLoaded ? 'hidden' : ''}`}>
+                        <img
+                            src="/basic.png"
+                            alt="Default"
+                            onLoad={() => setImageLoaded(true)}
+                        />
+                    </div>
                 </div>
             </div>
             {!loading && (
