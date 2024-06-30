@@ -55,17 +55,8 @@ const App = () => {
                             <img
                                 src="/loading.gif"
                                 alt="Loading"
-                                className={`loading-gif ${imageLoaded ? 'hidden' : ''}`}
+                                className={`loading-gif`}
                             />
-                            {!imageLoaded && (
-                                <div className={`default-image ${imageLoaded ? 'hidden' : ''}`}>
-                                    <img
-                                        src="/basic.png"
-                                        alt="Default"
-                                        onLoad={() => setImageLoaded(true)}
-                                    />
-                                </div>
-                            )}
                             <div className={`coefficient ${!imageLoaded ? 'hidden' : ''}`}>
                                 {`x ${coefficient || 0.00}`}
                             </div>
