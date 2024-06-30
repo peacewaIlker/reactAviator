@@ -60,20 +60,23 @@ const App = () => {
             </div>
             <div className="result-container">
                 <div className="image-container">
-                    <div className={`coefficient ${coefficient !== null ? '' : 'hidden'}`}>
-                        {`x ${coefficient || '0.00'}`}
-                    </div>
-                    <div className={`default-image ${imageLoaded ? 'hidden' : 'default-image'}`}>
-                        <img
-                            src="/basic.png"
-                            alt="Default"
-                            onLoad={() => setImageLoaded(true)}
-                        />
-                    </div>
-                    {gifAnimation && (
-                        <div className="gif-animation">
-                            <img src="/loading.gif" alt="Loading" className="loading-gif" />
-                        </div>
+
+                    {loading ? (
+                        <>
+                            <img
+                                src="/loading.gif"
+                                alt="Loading"
+                                className={`loading-gif`}
+                            />
+                            <div className={`coefficient ${!imageLoaded ? 'hidden' : ''}`}>
+                                {`x ${coefficient || 0.00}`}
+                            </div>
+                        </>
+                    ) : (
+                        coefficient !== null && (
+                            <div className="coefficient">{`x ${coefficient}`}</div>
+                        )
+
                     )}
                 </div>
             </div>
