@@ -5,6 +5,7 @@ const App = () => {
     const [loading, setLoading] = useState(false);
     const [coefficient, setCoefficient] = useState(null);
     const [targetCoefficient, setTargetCoefficient] = useState(null);
+    const [imageLoaded, setImageLoaded] = useState(false); // Состояние для отслеживания загрузки изображения
 
     const generateCoefficient = () => {
         let randomNumbers = [];
@@ -17,7 +18,7 @@ const App = () => {
                 randomNumbers.push(x);
             }
         }
-        return Number(randomNumbers[0].toFixed(1));
+        return Number(randomNumbers[0].toFixed(2));
     };
 
     const handleClick = () => {
@@ -51,8 +52,23 @@ const App = () => {
                 <div className="image-container">
                     {loading ? (
                         <>
-                            <img src="/loading.gif" alt="Loading" className="loading-gif" />
-                            <div className="coefficient">{`x ${coefficient || 0.00}`}</div>
+                            <img
+                                src="/loading.gif"
+                                alt="Loading"
+                                className={`loading-gif ${imageLoaded ? 'hidden' : ''}`}
+                            />
+                            {!imageLoaded && (
+                                <div className={`default-image ${imageLoaded ? 'hidden' : ''}`}>
+                                    <img
+                                        src="/basic.png"
+                                        alt="Default"
+                                        onLoad={() => setImageLoaded(true)}
+                                    />
+                                </div>
+                            )}
+                            <div className={`coefficient ${!imageLoaded ? 'hidden' : ''}`}>
+                                {`x ${coefficient || 0.00}`}
+                            </div>
                         </>
                     ) : (
                         coefficient !== null && (
