@@ -1,79 +1,73 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import './App.css';
-import generateRandomNumber from './generateRandomNumber'; // Импортируйте функцию генерации коэффициента
 
-const loadingGif = 'loading.gif'; // Путь к вашему GIF файлу
-const headerImage = 'header-image.jpg'; // Путь к вашему изображению для замены подписи
-const defaultImage = 'default-image.jpg'; // Путь к изображению по умолчанию
-
-function App() {
-    const [image, setImage] = useState(defaultImage);
+const App = () => {
     const [loading, setLoading] = useState(false);
     const [coefficient, setCoefficient] = useState(null);
     const [targetCoefficient, setTargetCoefficient] = useState(null);
-    const requestRef = useRef();
 
-    const incrementCoefficient = (startTime, duration) => {
-        const elapsed = (Date.now() - startTime) / 1000;
-        const progress = elapsed / duration;
-        const currentCoefficient = Math.min(progress * targetCoefficient, targetCoefficient);
-        setCoefficient(currentCoefficient);
-        if (currentCoefficient < targetCoefficient) {
-            requestRef.current = requestAnimationFrame(() => incrementCoefficient(startTime, duration));
-        } else {
-            cancelAnimationFrame(requestRef.current);
+    const generateCoefficient = () => {
+        let randomNumbers = [];
+        while (randomNumbers.length < 1) {
+            const x = Math.random() * (8 - 1.1) + 1.1;
+            if (x >= 1.4 && x <= 2.3) {
+                randomNumbers.push(x);
+            }
+            if (Math.random() < 0.2) {
+                randomNumbers.push(x);
+            }
         }
+        return Number(randomNumbers[0].toFixed(1));
     };
 
-    const getResult = () => {
-        setImage(null); // Убираем предыдущее изображение
+    const handleClick = () => {
         setLoading(true);
-        setCoefficient(0);
+        const target = generateCoefficient();
+        setTargetCoefficient(target);
 
-        const newCoefficient = generateRandomNumber(); // Генерация нового коэффициента
-        setTargetCoefficient(newCoefficient);
-        const startTime = Date.now();
-        const duration = 3; // Длительность анимации в секундах
-
-        requestRef.current = requestAnimationFrame(() => incrementCoefficient(startTime, duration));
-
-        setTimeout(() => {
-            setLoading(false);
-        }, duration * 1000);
+        let start = 0;
+        const interval = setInterval(() => {
+            start += 0.01;
+            if (start >= target) {
+                clearInterval(interval);
+                setCoefficient(target);
+                setLoading(false);
+            } else {
+                setCoefficient(start.toFixed(2));
+            }
+        }, 30); // Увеличение интервала для более плавной анимации
     };
 
     return (
         <div className="App">
             <div className="header">
                 <div className="header-top">
-                    <img src={headerImage} alt="Header" className="header-image" />
+                    <img src="/tg.png" alt="Header" className="header-image" />
                     <span className="header-text">tg_marcus_top1</span>
                 </div>
-                <div className="header-text header-text-bold">MINES HACKER</div>
+                <div className="header-text-bold">MINES HACKER</div>
             </div>
             <div className="result-container">
                 <div className="image-container">
-                    {loading && (
+                    {loading ? (
                         <>
-                            <img src={loadingGif} alt="Loading" className="loading-gif" />
-                            <div className="coefficient">x {coefficient !== null ? coefficient.toFixed(2) : ''}</div>
+                            <img src="/loading.gif" alt="Loading" className="loading-gif" />
+                            <div className="coefficient">{`x ${coefficient || 0.00}`}</div>
                         </>
-                    )}
-                    {!loading && (
-                        <>
-                            <div className="coefficient">x {targetCoefficient !== null ? targetCoefficient.toFixed(2) : ''}</div>
-                            <img src={image} alt="Result" />
-                        </>
+                    ) : (
+                        coefficient !== null && (
+                            <div className="coefficient">{`x ${coefficient}`}</div>
+                        )
                     )}
                 </div>
-                {!loading && (
-                    <button onClick={getResult}>
-                        {loading || !image ? 'Рассчитать результат' : 'Получить прогноз'}
-                    </button>
-                )}
             </div>
+            {!loading && (
+                <button onClick={handleClick}>
+                    {coefficient === null ? 'Рассчитать результат' : 'Получить прогноз'}
+                </button>
+            )}
         </div>
     );
-}
+};
 
 export default App;
