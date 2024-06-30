@@ -1,34 +1,42 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 import generateRandomNumber from './generateRandomNumber'; // Импортируйте функцию генерации коэффициента
 
 const loadingGif = 'XDZT.gif'; // Путь к вашему GIF файлу
 const headerImage = 'tg.png'; // Путь к вашему изображению для замены подписи
-const defaultImage = 'basic.png'; // Путь к изображению по умолчанию
+const defaultImage = 'basic.jpg'; // Путь к изображению по умолчанию
 
 function App() {
     const [image, setImage] = useState(defaultImage);
     const [loading, setLoading] = useState(false);
     const [coefficient, setCoefficient] = useState(0);
+    const [targetCoefficient, setTargetCoefficient] = useState(0);
+    const requestRef = useRef();
+
+    const incrementCoefficient = (startTime, duration) => {
+        const elapsed = (Date.now() - startTime) / 1000;
+        const progress = elapsed / duration;
+        const currentCoefficient = Math.min(progress * targetCoefficient, targetCoefficient);
+        setCoefficient(currentCoefficient);
+        if (currentCoefficient < targetCoefficient) {
+            requestRef.current = requestAnimationFrame(() => incrementCoefficient(startTime, duration));
+        } else {
+            setLoading(false);
+            cancelAnimationFrame(requestRef.current);
+        }
+    };
 
     const getResult = () => {
         setImage(null); // Убираем предыдущее изображение
         setLoading(true);
         setCoefficient(0);
 
-        const startLoadingTime = Date.now();
-        const targetCoefficient = generateRandomNumber(); // Генерация нового коэффициента
+        const newCoefficient = generateRandomNumber(); // Генерация нового коэффициента
+        setTargetCoefficient(newCoefficient);
+        const startTime = Date.now();
+        const duration = 3; // Длительность анимации в секундах
 
-        const interval = setInterval(() => {
-            const elapsedTime = (Date.now() - startLoadingTime) / 3000;
-            setCoefficient(Math.min(elapsedTime * targetCoefficient, targetCoefficient));
-        }, 100);
-
-        setTimeout(() => {
-            setLoading(false);
-            setImage(defaultImage); // Возвращаем изображение по умолчанию после загрузки
-            clearInterval(interval);
-        }, 3000); // Задержка для анимации загрузки
+        requestRef.current = requestAnimationFrame(() => incrementCoefficient(startTime, duration));
     };
 
     return (
@@ -49,7 +57,10 @@ function App() {
                         </>
                     )}
                     {!loading && image && (
-                        <img src={image} alt="Result" />
+                        <>
+                            <div className="coefficient">x {coefficient.toFixed(2)}</div>
+                            <img src={image} alt="Result" />
+                        </>
                     )}
                 </div>
                 {!loading && (
