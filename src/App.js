@@ -67,7 +67,7 @@ const App = () => {
                                 src="/loading.gif"
                                 alt="Loading"
                             />
-                            <div className={`coefficient ${!imageLoaded ? 'hidden' : ''}`}>
+                            <div className={`coefficient`}>
                                 {`x ${coefficient || 0.00}`}
                             </div>
                         </>
