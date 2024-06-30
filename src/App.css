@@ -48,7 +48,7 @@ body {
 .header-image {
   max-width: 30px; /* Уменьшенный размер изображения */
   height: auto;
-  margin-right: 2px; /* Отступ между изображением и текстом */
+  margin-right: 10px; /* Отступ между изображением и текстом */
 }
 
 .header-text {
@@ -56,7 +56,6 @@ body {
   font-weight: 400; /* Regular */
   font-size: 20px; /* Уменьшенный размер шрифта */
   line-height: 1.2;
-  color: #002038;
 }
 
 .header-text-bold {
@@ -107,20 +106,15 @@ body {
   z-index: 2;
 }
 
-
-.App button {
-  height: 50px;
-  width: 250px; /* Увеличьте ширину в два раза */
-  padding: 2px; /* Увеличенный размер кнопки */
-  font-size: 30px; /* Увеличенный размер шрифта кнопки */
-  font-weight: 500;
+button {
+  padding: 20px 40px; /* Увеличенный размер кнопки */
+  font-size: 24px; /* Увеличенный размер шрифта кнопки */
   margin-top: 20px; /* Отступ сверху для кнопки */
   background-color: #002038; /* Фон кнопки */
   color: white; /* Цвет текста */
   border: none; /* Убираем рамку */
-  border-radius: 10px; /* Закругленные края */
+  border-radius: 25px; /* Закругленные края */
   cursor: pointer; /* Указатель курсора при наведении */
-  transition: background-color 0.3s ease; /* Сгладить переход цвета */
 }
 
 button:hover {
@@ -137,19 +131,19 @@ button:hover {
     padding: 30px;
   }
 
-  /*.App button {*/
-  /*  padding: 1px 20px;*/
-  /*  font-size: 20px;*/
-  /*}*/
+  button {
+    padding: 16px 32px;
+    font-size: 20px;
+  }
 }
 
 @media (max-width: 480px) {
   .App {
     padding: 20px;
   }
-  .App button {
-    width: 200px;
-    padding: 1px 20px;
-    font-size: 25px;
+
+  button {
+    padding: 12px 24px;
+    font-size: 16px;
   }
 }

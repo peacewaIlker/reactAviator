@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 import generateRandomNumber from './generateRandomNumber'; // Импортируйте функцию генерации коэффициента
 
-const loadingGif = 'XDZT.gif'; // Путь к вашему GIF файлу
+const loadingGif = 'loading.gif'; // Путь к вашему GIF файлу
 const headerImage = 'header-image.jpg'; // Путь к вашему изображению для замены подписи
 const defaultImage = 'default-image.jpg'; // Путь к изображению по умолчанию
 
@@ -21,7 +21,6 @@ function App() {
         if (currentCoefficient < targetCoefficient) {
             requestRef.current = requestAnimationFrame(() => incrementCoefficient(startTime, duration));
         } else {
-            setLoading(false);
             cancelAnimationFrame(requestRef.current);
         }
     };
@@ -37,6 +36,10 @@ function App() {
         const duration = 3; // Длительность анимации в секундах
 
         requestRef.current = requestAnimationFrame(() => incrementCoefficient(startTime, duration));
+
+        setTimeout(() => {
+            setLoading(false);
+        }, duration * 1000);
     };
 
     return (
@@ -56,7 +59,7 @@ function App() {
                             <div className="coefficient">x {coefficient !== null ? coefficient.toFixed(2) : ''}</div>
                         </>
                     )}
-                    {!loading && image && (
+                    {!loading && (
                         <>
                             <div className="coefficient">x {targetCoefficient !== null ? targetCoefficient.toFixed(2) : ''}</div>
                             <img src={image} alt="Result" />
