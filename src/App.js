@@ -26,7 +26,7 @@ const App = () => {
         const target = generateCoefficient();
         setTargetCoefficient(target);
 
-        let start = 0;
+        let start = 1;
         const interval = setInterval(() => {
             start += 0.01;
             if (start >= target) {
