@@ -73,10 +73,11 @@ const App = () => {
 
                     {loading ? (
                         <>
-                            <img
-                                src={loadedGif}
-                                alt="Loading"
-                            />
+                            <div className="loading-spinner">
+                                {loading && (
+                                    <div className="spinner"></div>
+                                )}
+                            </div>
                             <div className={`coefficient`}>
                                 {`x ${coefficient || 0.00}`}
                             </div>
