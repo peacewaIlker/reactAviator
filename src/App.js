@@ -79,7 +79,7 @@ const App = () => {
                         <>
                             <div className="loading-gif">
                                 <img
-                                    src="/aviator500.gif"
+                                    src={img.src}
                                     alt="Loading"
                                     className="loading-gif"
                                 />
