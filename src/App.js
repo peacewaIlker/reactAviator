@@ -79,6 +79,7 @@ const App = () => {
                             <img
                                 src='/aviator300.gif'
                                 alt="Loading"
+                                className="gif"
                             />
 
                             <div className={`coefficient`}>
