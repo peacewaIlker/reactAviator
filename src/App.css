@@ -140,7 +140,7 @@ body {
   animation: none;
 }
 
-.coefficient.animate {
+.coefficientAnimate {
   position: absolute;
   font-size: 48px;
   color: white;
