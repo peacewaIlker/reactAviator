@@ -47,11 +47,11 @@ const App = () => {
             if (start >= target) {
                 clearInterval(interval);
                 setCoefficient(target.toFixed(2));
-                const coefficientElement = document.querySelector('.coefficient');
-                coefficientElement.classList.add('animate');
-                setTimeout(() => {
-                    coefficientElement.classList.remove('animate');
-                }, 500);
+                // const coefficientElement = document.querySelector('.coefficient');
+                // coefficientElement.classList.add('animate');
+                // setTimeout(() => {
+                //     coefficientElement.classList.remove('animate');
+                // }, 500);
                 setLoading(false);
                 setGifAnimation(false); // Остановка анимации гифки
 
@@ -62,6 +62,16 @@ const App = () => {
 
         setGifAnimation(true); // Запуск анимации гифки
     };
+
+    useEffect(() => {
+        if (coefficient === targetCoefficient) {
+            const coefficientElement = document.querySelector('.coefficient');
+            coefficientElement.classList.add('animate');
+            setTimeout(() => {
+                coefficientElement.classList.remove('animate');
+            }, 500);
+        }
+    }, [coefficient, targetCoefficient]);
 
 
 
