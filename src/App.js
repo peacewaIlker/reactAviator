@@ -78,7 +78,7 @@ const App = () => {
                         <>
                             <div className="loading-spinner">
                                 <img
-                                    src="/aviator500.gif"
+                                    src="/loading.gif"
                                     alt="Loading"
                                     className="gif-animation"
                                 />
