@@ -57,12 +57,7 @@ const App = () => {
         setGifAnimation(true); // Запуск анимации гифки
     };
 
-    useEffect(() => {
-        if (coefficient === targetCoefficient) {
-            setGifAnimation(false); // Остановка анимации гифки при достижении цели
 
-        }
-    }, [coefficient, targetCoefficient]);
 
     return (
         <div className="App">
