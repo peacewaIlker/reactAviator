@@ -87,7 +87,7 @@ const App = () => {
                         </>
                     ) : (
                         coefficient !== null && (
-                            <div className="coefficient/animate">{`x ${coefficient}`}</div>
+                            <div className="coefficientAnimate">{`x ${coefficient}`}</div>
                         )
 
                     )}
