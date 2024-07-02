@@ -47,7 +47,7 @@ const App = () => {
             if (start >= target) {
                 clearInterval(interval);
                 setCoefficient(target.toFixed(2));
-                const coefficientElement = document.getElementById('fin_coef');
+                const coefficientElement = document.querySelector('.coefficient');
                 coefficientElement.classList.add('animate');
                 setTimeout(() => {
                     coefficientElement.classList.remove('animate');
@@ -92,7 +92,7 @@ const App = () => {
                         </>
                     ) : (
                         coefficient !== null && (
-                            <div id="fin_coef" className="coefficient">{`x ${coefficient}`}</div>
+                            <div className="coefficient">{`x ${coefficient}`}</div>
                         )
 
                     )}
