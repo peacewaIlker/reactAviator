@@ -10,10 +10,11 @@ const App = () => {
     const [targetCoefficient, setTargetCoefficient] = useState(null);
     const [imageLoaded, setImageLoaded] = useState(false);
     const [gifAnimation, setGifAnimation] = useState(false);
+    const [gifLoaded, setGifLoaded] = useState(false);
 
     useEffect(() => {
         const img = new Image();
-        img.src = "loading.gif";
+        img.src = "/aviator500.gif";
         img.onload = () => {
             tg.ready()
             tg.expand()
@@ -76,18 +77,13 @@ const App = () => {
 
                     {loading ? (
                         <>
-                            <div className="loading-spinner">
+                            <div className="loading-gif">
                                 <img
-                                    src="/loading.gif"
+                                    src="/aviator500.gif"
                                     alt="Loading"
-                                    className="gif-animation"
+                                    className="loading-gif"
                                 />
-                                {loading && (
-
-                                    <div className="spinner"></div>``
-                                )}
                             </div>
-
                             <div className={`coefficient`}>
                                 {`x ${coefficient || 0.00}`}
                             </div>
