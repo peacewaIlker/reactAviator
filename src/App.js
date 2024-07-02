@@ -69,7 +69,7 @@ const App = () => {
                     <img src="/tg.png" alt="Header" className="header-image" />
                     <span className="header-text">tg_marcus_top1</span>
                 </div>
-                <div className="header-text-bold">MINES HACKER</div>
+                <div className="header-text-bold">AVIATOR HACKER</div>
             </div>
             <div className="result-container">
                 <div className="image-container">

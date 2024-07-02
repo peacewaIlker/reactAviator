@@ -56,11 +56,13 @@ body {
   font-weight: 400; /* Regular */
   font-size: 20px; /* Уменьшенный размер шрифта */
   line-height: 1.2;
+  color: white;
 }
 
 .header-text-bold {
   font-weight: 900; /* Black */
   font-size: 36px; /* Увеличенный шрифт для MINES HACKER */
+  color: white;
 }
 
 .result-container {
@@ -156,7 +158,7 @@ body {
   font-size: 30px; /* Увеличенный размер шрифта кнопки */
   font-weight: 500;
   margin-top: 20px; /* Отступ сверху для кнопки */
-  background-color: #002038; /* Фон кнопки */
+  background-color: black; /* Фон кнопки */
   color: white; /* Цвет текста */
   border: none; /* Убираем рамку */
   border-radius: 10px; /* Закругленные края */
