@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
-const loadingGif = 'loading.gif'; // Путь к вашему GIF файлу
+const loadingGif = 'aviator.gif'; // Путь к вашему GIF файлу
 
 const App = () => {
     const [loading, setLoading] = useState(false);
@@ -77,6 +77,13 @@ const App = () => {
                                 {loading && (
                                     <div className="spinner"></div>
                                 )}
+                            </div>
+                            <div>
+                                <img
+                                    src={loadedGif}
+                                    alt="Loading"
+                                    className={`loading-gif`}
+                                />
                             </div>
                             <div className={`coefficient`}>
                                 {`x ${coefficient || 0.00}`}
