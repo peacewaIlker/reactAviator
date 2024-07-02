@@ -141,6 +141,10 @@ body {
 }
 
 .coefficient.animate {
+  position: absolute;
+  font-size: 48px;
+  color: white;
+  z-index: 2;
   animation: pop 0.5s ease-in-out;
 }
 
