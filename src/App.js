@@ -60,10 +60,7 @@ const App = () => {
     useEffect(() => {
         if (coefficient === targetCoefficient) {
             setGifAnimation(false); // Остановка анимации гифки при достижении цели
-            document.querySelector('.coefficient').classList.add('animate');
-            setTimeout(() => {
-                document.querySelector('.coefficient').classList.remove('animate');
-            }, 500);
+
         }
     }, [coefficient, targetCoefficient]);
 
