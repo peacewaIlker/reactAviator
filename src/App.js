@@ -14,7 +14,7 @@ const App = () => {
 
     useEffect(() => {
         const img = new Image();
-        img.src = "/aviator500.gif";
+        img.src = "/loading.gif";
         img.onload = () => {
             tg.ready()
             tg.expand()
@@ -79,7 +79,7 @@ const App = () => {
                         <>
                             <div className="loading-gif">
                                 <img
-                                    src={img.src}
+                                    src='/loading.gif'
                                     alt="Loading"
                                     className="loading-gif"
                                 />
