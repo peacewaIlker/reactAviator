@@ -47,13 +47,14 @@ const App = () => {
             if (start >= target) {
                 clearInterval(interval);
                 setCoefficient(target.toFixed(2));
-                setLoading(false);
-                setGifAnimation(false); // Остановка анимации гифки
                 const coefficientElement = document.querySelector('.coefficient');
                 coefficientElement.classList.add('animate');
                 setTimeout(() => {
                     coefficientElement.classList.remove('animate');
                 }, 500);
+                setLoading(false);
+                setGifAnimation(false); // Остановка анимации гифки
+
             } else {
                 setCoefficient(start.toFixed(2));
             }

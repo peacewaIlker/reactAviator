@@ -143,6 +143,18 @@ body {
   animation: pop 0.5s ease-in-out;
 }
 
+@keyframes pop {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.5);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
 .button {
   padding: 20px 40px; /* Увеличенный размер кнопки */
   font-size: 24px; /* Увеличенный размер шрифта кнопки */
