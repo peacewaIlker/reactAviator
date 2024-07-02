@@ -74,17 +74,17 @@ const App = () => {
                     {loading ? (
                         <>
                             <div className="loading-spinner">
+                                <img
+                                    src={loadedGif.src}
+                                    alt="Loading"
+                                    className={`default-image`}
+                                />
                                 {loading && (
+
                                     <div className="spinner"></div>
                                 )}
                             </div>
-                            {/*<div>*/}
-                            {/*    <img*/}
-                            {/*        src={loadedGif.src}*/}
-                            {/*        alt="Loading"*/}
-                            {/*        className={`loading-gif`}*/}
-                            {/*    />*/}
-                            {/*</div>*/}
+
                             <div className={`coefficient`}>
                                 {`x ${coefficient || 0.00}`}
                             </div>
