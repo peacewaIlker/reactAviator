@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
-const loadingGif = 'aviator500.gif'; // Путь к вашему GIF файлу
+
 
 const App = () => {
     const [loading, setLoading] = useState(false);
@@ -9,14 +9,9 @@ const App = () => {
     const [targetCoefficient, setTargetCoefficient] = useState(null);
     const [imageLoaded, setImageLoaded] = useState(false);
     const [gifAnimation, setGifAnimation] = useState(false);
-    const [loadedGif, setLoadedGif] = useState(null); // Добавьте состояние для загрузки GIF
+    const [gifLoaded, setGifLoaded] = useState(false);
 
 
-    const img = new Image();
-    img.src = loadingGif
-    img.onload = () => {
-        setLoadedGif(img)
-    }
 
     const generateCoefficient = () => {
         let randomNumbers = [];
@@ -75,9 +70,10 @@ const App = () => {
                         <>
                             <div className="loading-spinner">
                                 <img
-                                    src={img.src}
+                                    src="/aviator500.gif"
                                     alt="Loading"
-                                    className={`default-image`}
+                                    className="default-image"
+                                    onLoad={() => setGifLoaded(true)}
                                 />
                                 {loading && (
 
