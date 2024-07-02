@@ -73,28 +73,29 @@ const App = () => {
                 <div className="header-text-bold">MINES HACKER</div>
             </div>
             <div className="result-container">
-                {loading ? (
-                    <>
-                        <div className="image-container">
+                <div className="image-container">
+                    {loading ? (
+                        <>
                             <img
                                 src='/aviator300.gif'
                                 alt="Loading"
                             />
-                        </div>
-                        <div className={`coefficient`}>
-                            {`x ${coefficient || 0.00}`}
-                        </div>
-                    </>
-                ) : (
-                    coefficient !== null && (
-                        <div className="coefficient">{`x ${coefficient}`}</div>
-                    )
 
-                )}
+                            <div className={`coefficient`}>
+                                {`x ${coefficient || 0.00}`}
+                            </div>
+                        </>
+                    ) : (
+                        coefficient !== null && (
+                            <div className="coefficient">{`x ${coefficient}`}</div>
+                        )
+
+                    )}
+                </div>
             </div>
             {!loading && (
                 <button onClick={handleClick}>
-                    {coefficient === null ? 'START HACKING' : 'GET SIGNAL'}
+                {coefficient === null ? 'START HACKING' : 'GET SIGNAL'}
                 </button>
             )}
         </div>
