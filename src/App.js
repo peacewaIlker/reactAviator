@@ -77,11 +77,11 @@ const App = () => {
 
                     {loading ? (
                         <>
-                            <div className="loading-gif">
+                            <div className="gif-animation">
                                 <img
                                     src='/aviator300.gif'
                                     alt="Loading"
-                                    className="loading-gif"
+                                    className="gif-animation"
                                 />
                             </div>
                             <div className={`coefficient`}>
