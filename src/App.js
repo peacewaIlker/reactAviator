@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
+const tg = window.Telegram.WebApp
 
 
 const App = () => {
@@ -11,7 +12,15 @@ const App = () => {
     const [gifAnimation, setGifAnimation] = useState(false);
     const [gifLoaded, setGifLoaded] = useState(false);
 
+    useEffect(() => {
+        const img = new Image();
+        img.src = "aviator500.gif";
+        img.onload = () => {
+            tg.ready()
+            tg.expand()
+        };
 
+    }, []);
 
     const generateCoefficient = () => {
         let randomNumbers = [];
@@ -68,16 +77,18 @@ const App = () => {
 
                     {loading ? (
                         <>
-                            {loading && (
-                                <div className="gif-animation">
-                                    <img
-                                        src="/loading.gif"
-                                        alt="Loading"
-                                        className="loading-gif"
-                                        onLoad={() => setGifLoaded(true)}
-                                    />
-                                </div>
-                            )}
+                            <div className="loading-spinner">
+                                <img
+                                    src="/aviator500.gif"
+                                    alt="Loading"
+                                    className="default-image"
+                                    onLoad={() => setGifLoaded(true)}
+                                />
+                                {loading && (
+
+                                    <div className="spinner"></div>``
+                                )}
+                            </div>
 
                             <div className={`coefficient`}>
                                 {`x ${coefficient || 0.00}`}
