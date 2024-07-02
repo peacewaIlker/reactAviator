@@ -10,7 +10,6 @@ const App = () => {
     const [targetCoefficient, setTargetCoefficient] = useState(null);
     const [imageLoaded, setImageLoaded] = useState(false);
     const [gifAnimation, setGifAnimation] = useState(false);
-    const [gifLoaded, setGifLoaded] = useState(false);
 
     useEffect(() => {
         const img = new Image();
@@ -81,8 +80,7 @@ const App = () => {
                                 <img
                                     src="/aviator500.gif"
                                     alt="Loading"
-                                    className="default-image"
-                                    onLoad={() => setGifLoaded(true)}
+                                    className="gif-animation"
                                 />
                                 {loading && (
 
