@@ -68,18 +68,16 @@ const App = () => {
 
                     {loading ? (
                         <>
-                            <div className="loading-spinner">
-                                <img
-                                    src="/aviator500.gif"
-                                    alt="Loading"
-                                    className="default-image"
-                                    onLoad={() => setGifLoaded(true)}
-                                />
-                                {loading && (
-
-                                    <div className="spinner"></div>
-                                )}
-                            </div>
+                            {loading && (
+                                <div className="gif-animation">
+                                    <img
+                                        src="/loading.gif"
+                                        alt="Loading"
+                                        className="loading-gif"
+                                        onLoad={() => setGifLoaded(true)}
+                                    />
+                                </div>
+                            )}
 
                             <div className={`coefficient`}>
                                 {`x ${coefficient || 0.00}`}
