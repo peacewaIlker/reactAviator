@@ -139,6 +139,10 @@ body {
   z-index: 2;
 }
 
+.coefficient.animate {
+  animation: pop 0.5s ease-in-out;
+}
+
 .button {
   padding: 20px 40px; /* Увеличенный размер кнопки */
   font-size: 24px; /* Увеличенный размер шрифта кнопки */
