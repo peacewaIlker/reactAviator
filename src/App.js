@@ -78,13 +78,13 @@ const App = () => {
                                     <div className="spinner"></div>
                                 )}
                             </div>
-                            <div>
-                                <img
-                                    src={loadedGif.src}
-                                    alt="Loading"
-                                    className={`loading-gif`}
-                                />
-                            </div>
+                            {/*<div>*/}
+                            {/*    <img*/}
+                            {/*        src={loadedGif.src}*/}
+                            {/*        alt="Loading"*/}
+                            {/*        className={`loading-gif`}*/}
+                            {/*    />*/}
+                            {/*</div>*/}
                             <div className={`coefficient`}>
                                 {`x ${coefficient || 0.00}`}
                             </div>
