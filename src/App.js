@@ -9,13 +9,13 @@ const App = () => {
     const [targetCoefficient, setTargetCoefficient] = useState(null);
     const [imageLoaded, setImageLoaded] = useState(false);
     const [gifAnimation, setGifAnimation] = useState(false);
-    const [loadedGif, setLoadedGif] = useState(loadingGif); // Добавьте состояние для загрузки GIF
+    const [loadedGif, setLoadedGif] = useState(null); // Добавьте состояние для загрузки GIF
 
 
     const img = new Image();
     img.src = loadingGif
     img.onload = () => {
-        setLoadedGif(loadingGif)
+        setLoadedGif(img)
     }
 
     const generateCoefficient = () => {
@@ -80,7 +80,7 @@ const App = () => {
                             </div>
                             <div>
                                 <img
-                                    src={loadedGif}
+                                    src={loadedGif.src}
                                     alt="Loading"
                                     className={`loading-gif`}
                                 />
