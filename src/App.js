@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
-const loadingGif = 'aviator.gif'; // Путь к вашему GIF файлу
+const loadingGif = 'aviator500.gif'; // Путь к вашему GIF файлу
 
 const App = () => {
     const [loading, setLoading] = useState(false);
