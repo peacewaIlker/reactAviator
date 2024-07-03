@@ -53,7 +53,7 @@ const App = () => {
             } else {
                 setCoefficient(start.toFixed(2));
             }
-        }, 30);
+        }, 10);
 
         setGifAnimation(true); // Запуск анимации гифки
     };
