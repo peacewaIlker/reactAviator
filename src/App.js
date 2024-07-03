@@ -86,14 +86,8 @@ const App = () => {
                             </div>
                         </>
                     ) : (
-                        coefficient !== null ? (
+                        coefficient !== null && (
                             <div className="coefficientAnimate">{`x ${coefficient}`}</div>
-                        ) : (
-                            <img
-                                src='/aviator.png'
-                                alt="Loading"
-                                className="gif"
-                            />
                         )
 
                     )}
@@ -101,7 +95,7 @@ const App = () => {
             </div>
             {!loading && (
                 <button onClick={handleClick}>
-                    {coefficient === null ? 'START HACKING' : 'GET SIGNAL'}
+                {coefficient === null ? 'START HACKING' : 'GET SIGNAL'}
                 </button>
             )}
         </div>

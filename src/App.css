@@ -160,7 +160,7 @@ body {
   font-weight: 500;
   margin-top: 20px; /* Отступ сверху для кнопки */
   background-color: black; /* Фон кнопки */
-  color: red; /* Цвет текста */
+  color: white; /* Цвет текста */
   border: none; /* Убираем рамку */
   border-radius: 10px; /* Закругленные края */
   cursor: pointer; /* Указатель курсора при наведении */
