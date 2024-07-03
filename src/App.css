@@ -160,16 +160,14 @@ body {
   font-weight: 500;
   margin-top: 20px; /* Отступ сверху для кнопки */
   background-color: black; /* Фон кнопки */
-  color: white; /* Цвет текста */
+  color: red; /* Цвет текста */
   border: none; /* Убираем рамку */
   border-radius: 10px; /* Закругленные края */
   cursor: pointer; /* Указатель курсора при наведении */
   transition: background-color 0.3s ease; /* Сгладить переход цвета */
 }
 
-.button:hover {
-  background-color: #003060; /* Более светлый фон при наведении */
-}
+
 
 .hidden {
   display: none; /* Класс для скрытия элемента */
