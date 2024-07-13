@@ -14,7 +14,7 @@ const App = () => {
     const [randomNumber, setRandomNumber] = useState(null);
 
     const generateRandomNumber = () => {
-        return Math.floor(Math.random() * (600 - 500 + 1)) + 500;
+        return Math.floor(Math.random() * (1500 - 500 + 1)) + 500;
     };
 
     useEffect(() => {
