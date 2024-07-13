@@ -11,6 +11,11 @@ const App = () => {
     const [imageLoaded, setImageLoaded] = useState(false);
     const [gifAnimation, setGifAnimation] = useState(false);
     const [gifLoaded, setGifLoaded] = useState(false);
+    const [randomNumber, setRandomNumber] = useState(null);
+
+    const generateRandomNumber = () => {
+        return Math.floor(Math.random() * (600 - 500 + 1)) + 500;
+    };
 
     useEffect(() => {
         const img = new Image();
@@ -40,6 +45,7 @@ const App = () => {
         setLoading(true);
         const target = generateCoefficient();
         setTargetCoefficient(target);
+        setRandomNumber(generateRandomNumber())
 
         let start = 1;
         const interval = setInterval(() => {
@@ -93,6 +99,11 @@ const App = () => {
                     )}
                 </div>
             </div>
+            {!loading && randomNumber !== null && (
+                <div className="bet-container">
+                    <span className="bet">{`${randomNumber} ₴`}</span>
+                </div>
+            )}
             {!loading && (
                 <button onClick={handleClick}>
                 {coefficient === null ? 'START HACKING' : 'GET SIGNAL'}
